@@ -1,0 +1,98 @@
+/* ------------------------------------------------------
+   ORIGINAL NAVBAR UI (kept exactly as you provided)
+------------------------------------------------------ */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 0.5rem 2rem;
+
+  /* Added smooth animation class */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+}
+
+.logo {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+
+  /* smooth color + underline animation */
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #f0a500;
+}
+
+#logbutton {
+  background-color: #535d7c; /* Tailwind blue-900 */
+  color: white;
+  padding: 0.5rem 2rem;  /* Wider padding */
+  border: none;
+  border-radius: 4px;       /* Rounded button */
+  font-size: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#logbutton:hover {
+  background-color: #4970dc; /* Tailwind blue-700 */
+  transform: translateY(-2px); /* subtle lift */
+}
+
+#logbutton a {
+  color: white;
+  text-decoration: none;
+}
+
+
+/* ------------------------------------------------------
+   NEW: Hover underline animation (smooth bar)
+------------------------------------------------------ */
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -3px;
+  background-color: #f0a500;
+  transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+/* ------------------------------------------------------
+   NEW: Navbar slide-down + fade animation
+------------------------------------------------------ */
+.navbar {
+  opacity: 0;
+  animation: slideDownFade 0.6s ease-out forwards;
+}
+
+@keyframes slideDownFade {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
