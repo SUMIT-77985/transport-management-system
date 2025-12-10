@@ -96,3 +96,58 @@
     opacity: 1;
   }
 }
+
+/* ------------------------------------------------------
+   Account styles + animations
+------------------------------------------------------ */
+.account {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.account-btn {
+  background: linear-gradient(90deg,#06b6d4 0%,#3b82f6 100%);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(59,130,246,0.18);
+  transform: translateY(-4px) scale(0.98);
+  transition: transform 240ms cubic-bezier(.2,.9,.3,1), box-shadow 240ms;
+  opacity: 0;
+  animation: fadeInSlide 360ms ease forwards;
+}
+
+.account-btn:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 10px 26px rgba(59,130,246,0.26);
+}
+
+.logout-btn {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 200ms, color 200ms, transform 120ms;
+}
+
+.logout-btn:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-2px);
+}
+
+@keyframes fadeInSlide {
+  from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* small responsive tweak */
+@media (max-width: 640px) {
+  .nav-links { gap: 0.8rem; }
+  .account-btn { padding: 6px 10px; }
+}
