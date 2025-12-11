@@ -45,8 +45,9 @@ function Navbar() {
               </button>
             </div>
           ) : (
-            <button id="logbutton">
-              <Link href="/login">Login</Link>
+            <button id="logbutton"
+            onClick={() => router.push("/login")}>
+              Login
             </button>
           )}
         </li>
