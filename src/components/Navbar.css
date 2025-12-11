@@ -1,23 +1,34 @@
 /* ------------------------------------------------------
-   ORIGINAL NAVBAR UI (kept exactly as you provided)
+   NAVBAR BASE UI 
 ------------------------------------------------------ */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   background-color: #333;
   padding: 0.5rem 2rem;
 
-  /* Added smooth animation class */
+  color: #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+
+  /* Animation */
+  opacity: 0;
+  animation: slideDownFade 0.6s ease-out forwards;
 }
 
+/* ------------------------------------------------------
+   LOGO
+------------------------------------------------------ */
 .logo {
   color: #fff;
   font-size: 1.5rem;
   font-weight: bold;
 }
 
+/* ------------------------------------------------------
+   NAV LINKS
+------------------------------------------------------ */
 .nav-links {
   list-style: none;
   display: flex;
@@ -28,8 +39,6 @@
   color: #fff;
   text-decoration: none;
   font-size: 1rem;
-
-  /* smooth color + underline animation */
   position: relative;
   transition: color 0.3s ease;
 }
@@ -38,31 +47,7 @@
   color: #f0a500;
 }
 
-#logbutton {
-  background-color: #535d7c; /* Tailwind blue-900 */
-  color: white;
-  padding: 0.5rem 2rem;  /* Wider padding */
-  border: none;
-  border-radius: 4px;       /* Rounded button */
-  font-size: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-#logbutton:hover {
-  background-color: #4970dc; /* Tailwind blue-700 */
-  transform: translateY(-2px); /* subtle lift */
-}
-
-#logbutton a {
-  color: white;
-  text-decoration: none;
-}
-
-
-/* ------------------------------------------------------
-   NEW: Hover underline animation (smooth bar)
------------------------------------------------------- */
+/* Animated underline */
 .nav-links li a::after {
   content: "";
   position: absolute;
@@ -79,13 +64,89 @@
 }
 
 /* ------------------------------------------------------
-   NEW: Navbar slide-down + fade animation
+   LOGIN BUTTON
 ------------------------------------------------------ */
-.navbar {
-  opacity: 0;
-  animation: slideDownFade 0.6s ease-out forwards;
+#logbutton {
+  background-color: #535d7c;
+  color: white;
+  padding: 0.6rem 1.4rem;
+
+  border: none;
+  border-radius: 6px;
+
+  font-size: 1rem;
+  cursor: pointer;
+
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+#logbutton:hover {
+  background-color: #4970dc;
+  transform: translateY(-2px);
+}
+
+/* Make link inside button white */
+#logbutton a {
+  color: white;
+  text-decoration: none;
+}
+
+/* ------------------------------------------------------
+   ACCOUNT SECTION
+------------------------------------------------------ */
+.account {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Beautiful gradient account button */
+.account-btn {
+  background: linear-gradient(90deg, #06b6d4 0%, #3b82f6 100%);
+  color: #fff;
+
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: none;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.18);
+
+  transform: translateY(-4px) scale(0.98);
+  transition: transform 240ms cubic-bezier(.2,.9,.3,1), box-shadow 240ms;
+
+  opacity: 0;
+  animation: fadeInSlide 360ms ease forwards;
+}
+
+.account-btn:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 10px 26px rgba(59,130,246,0.26);
+}
+
+/* Logout button */
+.logout-btn {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.14);
+
+  padding: 6px 12px;
+  border-radius: 8px;
+
+  cursor: pointer;
+  transition: background 200ms, color 200ms, transform 120ms;
+}
+
+.logout-btn:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-2px);
+}
+
+/* ------------------------------------------------------
+   ANIMATIONS
+------------------------------------------------------ */
 @keyframes slideDownFade {
   0% {
     transform: translateY(-20px);
@@ -97,57 +158,30 @@
   }
 }
 
-/* ------------------------------------------------------
-   Account styles + animations
------------------------------------------------------- */
-.account {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.account-btn {
-  background: linear-gradient(90deg,#06b6d4 0%,#3b82f6 100%);
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 9999px;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 6px 18px rgba(59,130,246,0.18);
-  transform: translateY(-4px) scale(0.98);
-  transition: transform 240ms cubic-bezier(.2,.9,.3,1), box-shadow 240ms;
-  opacity: 0;
-  animation: fadeInSlide 360ms ease forwards;
-}
-
-.account-btn:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 10px 26px rgba(59,130,246,0.26);
-}
-
-.logout-btn {
-  background: transparent;
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.14);
-  padding: 6px 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 200ms, color 200ms, transform 120ms;
-}
-
-.logout-btn:hover {
-  background: rgba(255,255,255,0.06);
-  transform: translateY(-2px);
-}
-
 @keyframes fadeInSlide {
-  from { opacity: 0; transform: translateY(-6px) scale(0.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
-/* small responsive tweak */
+/* ------------------------------------------------------
+   RESPONSIVE
+------------------------------------------------------ */
 @media (max-width: 640px) {
-  .nav-links { gap: 0.8rem; }
-  .account-btn { padding: 6px 10px; }
+  .nav-links {
+    gap: 0.8rem;
+  }
+
+  #logbutton {
+    padding: 0.5rem 1rem;
+  }
+
+  .account-btn {
+    padding: 6px 10px;
+  }
 }
