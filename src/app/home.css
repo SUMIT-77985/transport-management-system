@@ -1,0 +1,33 @@
+.hero
+{
+padding: 30px 20px 40px;
+background-color: rgb(245, 215, 179);
+}
+#para{
+color: rgb(31, 17, 0);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+#tab1
+{
+width: 100%;
+}
+td{
+    padding: 3px;
+    
+}
+#im{
+  width: 550px;
+  height: 375px;
+  border-radius: 10px;
+}
+#im:hover{
+    opacity: 0.8;
+    border-radius: 25px;
+    box-shadow: 0 0 2px 1px rgba(187, 154, 37, 0.5);
+}
+.content-section{
+    background-color: rgb(245, 215, 179);
+    font-style: italic;
+    color: rgb(31, 17, 0);;
+}

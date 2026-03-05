@@ -1,0 +1,140 @@
+{
+  "info": {
+    "name": "Transport Management API - Local",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Collection for local backend (http://127.0.0.1:5000)"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://127.0.0.1:5000/api/health"
+      }
+    },
+    {
+      "name": "Root",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://127.0.0.1:5000/"
+      }
+    },
+    {
+      "name": "Signup",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"password\": \"Password123\",\n  \"role\": \"user\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://127.0.0.1:5000/api/auth/signup"
+      }
+    },
+    {
+      "name": "Login (save token)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"Password123\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://127.0.0.1:5000/api/auth/login"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if (pm.response.code === 200) {",
+              "  var json = pm.response.json();",
+              "  if (json.access_token) {",
+              "    pm.environment.set('token', json.access_token);",
+              "  }",
+              "}"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get Vehicles",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://127.0.0.1:5000/api/vehicles"
+      }
+    },
+    {
+      "name": "Get Drivers",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://127.0.0.1:5000/api/drivers"
+      }
+    },
+    {
+      "name": "Get Bookings (auth)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "http://127.0.0.1:5000/api/bookings"
+      }
+    },
+    {
+      "name": "Create Booking (auth)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"vehicle_id\": \"<vehicle_id>\",\n  \"pickup_location\": \"Start\",\n  \"drop_location\": \"End\",\n  \"booking_date\": \"2026-03-01\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://127.0.0.1:5000/api/bookings"
+      }
+    }
+  ]
+}
