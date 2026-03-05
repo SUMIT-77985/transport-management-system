@@ -10,6 +10,7 @@ subprocess.run(['git', 'add', '-A'])
 subprocess.run(['git', 'commit', '-m', 'Initial commit - Transport Management System'])
 
 # Push
-subprocess.run(['git', 'push', '-u', 'origin', 'master'])
+subprocess.run(['git', 'push', '-u', 'origin', 'main'])
 
 print("Done!")
+
